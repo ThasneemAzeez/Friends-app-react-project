@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Navigation from './Navigation'
+import axios from 'axios'
 
 const AddFriend = () => {
     const[data,changeData]=useState({
@@ -12,9 +14,20 @@ const AddFriend = () => {
     }
     const readValue=()=>{
         console.log(data)
+        axios.post("https://friendsapi-re5a.onrender.com/adddata",data).then((response)=>{
+            if (response.data.status=="success") {
+                alert("success")
+                
+            } else {
+                alert("error")
+                
+            }
+
+        })
     }
   return (
     <div>
+        <Navigation/>
         <div className="container">
             <div className="row">
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
